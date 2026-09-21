@@ -1,7 +1,6 @@
-```dockerfile
 FROM alpine:3.22
 
-ARG XRAY_VERSION=26.9.20
+ARG XRAY_VERSION=26.9.8
 
 RUN apk add --no-cache \
     ca-certificates \
@@ -30,4 +29,3 @@ COPY config.json /etc/xray/config.json
 EXPOSE 8080
 
 CMD ["/usr/local/bin/xray", "run", "-config", "/etc/xray/config.json"]
-```
