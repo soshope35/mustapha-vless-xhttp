@@ -10,7 +10,8 @@
       "settings": {
         "clients": [
           {
-            "id": "cbbfb9fe-b9b2-4625-bc33-9f45b1152e65"
+            "id": "cbbfb9fe-b9b2-4625-bc33-9f45b1152e65",
+            "level": 0
           }
         ],
         "decryption": "none"
@@ -19,7 +20,8 @@
         "network": "xhttp",
         "security": "none",
         "xhttpSettings": {
-          "path": "/vless/"
+          "path": "/vless/mustapha35",
+          "mode": "auto"
         }
       }
     }
@@ -27,11 +29,7 @@
   "outbounds": [
     {
       "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "tag": "block"
+      "tag": "direct"
     }
   ]
 }
