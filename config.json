@@ -21,7 +21,7 @@
         "security": "none",
         "xhttpSettings": {
           "path": "/vless/mustapha35",
-          "mode": "stream-one"
+          "mode": "stream-up"
         }
       }
     }
