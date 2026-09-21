@@ -9,14 +9,8 @@ RUN apk add --no-cache \
     tzdata
 
 RUN set -eux; \
-    ARCH="$(uname -m)"; \
-    case "${ARCH}" in \
-        x86_64) XRAY_ARCH="64" ;; \
-        aarch64) XRAY_ARCH="arm64-v8a" ;; \
-        *) echo "Unsupported architecture: ${ARCH}" && exit 1 ;; \
-    esac; \
     curl -fsSL \
-      "https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-${XRAY_ARCH}.zip" \
+      "https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip" \
       -o /tmp/xray.zip; \
     unzip /tmp/xray.zip xray -d /usr/local/bin/; \
     chmod +x /usr/local/bin/xray; \
@@ -25,6 +19,9 @@ RUN set -eux; \
 WORKDIR /etc/xray
 
 COPY config.json /etc/xray/config.json
+
+# التحقق من صحة إعدادات Xray أثناء بناء الصورة
+RUN /usr/local/bin/xray run -test -config /etc/xray/config.json
 
 EXPOSE 8080
 
